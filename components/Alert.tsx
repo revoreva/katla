@@ -33,7 +33,28 @@ interface AlertOptions {
 Alert.show = (message: string, options: AlertOptions) => {
   const duration = options.duration || Alert.options.duration;
 
-  toast(message, {
+  let formatted: any = message;
+  if (message.includes("\n")) {
+    const lines = message.split("\n");
+    formatted = (
+      <div>
+        {lines.map((line, i) => {
+          if (i === lines.length) {
+            return line;
+          }
+
+          return (
+            <>
+              {line}
+              <br />
+            </>
+          );
+        })}
+      </div>
+    );
+  }
+
+  toast(formatted, {
     id: options.id,
     duration,
   });

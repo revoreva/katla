@@ -9,7 +9,6 @@ import Header from "../../components/Header";
 import App from "../../components/App";
 import HelpModal from "../../components/HelpModal";
 import SettingsModal from "../../components/SettingsModal";
-import HeadingWithNum from "../../components/HeadingWithNum";
 import StatsModal from "../../components/StatsModal";
 import { useModalState } from "../../components/Modal";
 
@@ -48,7 +47,7 @@ export default function Arsip(props: Props) {
 
   const headerProps: ComponentProps<typeof Header> = {
     title: `Katla | Arsip #${props.num}`,
-    customHeading: <HeadingWithNum num={props.num} />,
+    num: Number(props.num),
     ogImage: "https://katla.vercel.app/og-arsip.png",
     themeColor: game.state.enableHighContrast ? "#f5793a" : "#15803D",
     onShowHelp: () => setModalState("help"),

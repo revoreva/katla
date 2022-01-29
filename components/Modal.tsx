@@ -1,10 +1,17 @@
 import { DialogOverlay, DialogContent } from "@reach/dialog";
-import { useEffect, useState } from "react";
+import { useEffect, useState, ReactNode } from "react";
 
-import { Game, getTotalPlay, isGameFinished } from "../utils/game";
-import { GameStats } from "../utils/types";
+import { getTotalPlay, isGameFinished } from "../utils/game";
+import { GameStats, Game } from "../utils/types";
 
-export default function Modal({ isOpen, onClose, children }) {
+interface Props {
+  isOpen: boolean;
+  onClose?: () => void;
+  children: ReactNode;
+}
+
+export default function Modal(props: Props) {
+  const { isOpen, onClose, children } = props;
   return (
     <DialogOverlay
       isOpen={isOpen}
